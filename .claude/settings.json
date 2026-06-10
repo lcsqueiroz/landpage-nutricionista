@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "typeui": {
+      "type": "http",
+      "url": "https://mcp.typeui.sh/mcp"
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(npm run build)",
+      "Bash(npm run start)",
+      "Bash(npm run lint)"
+    ]
+  }
+}
