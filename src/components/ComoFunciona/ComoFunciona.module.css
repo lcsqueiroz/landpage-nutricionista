@@ -1,0 +1,319 @@
+/* Section */
+.section {
+  background: var(--color-bg);
+  padding-block: var(--spacing-section);
+  padding-inline: var(--container-padding);
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Section header */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  text-align: center;
+}
+
+.sectionLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  max-width: 28ch;
+}
+
+.headingAccent {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* Steps grid (mobile: vertical stepper) */
+.stepsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Step — hidden by default, .visible toggled by IntersectionObserver */
+.step {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  position: relative;
+  padding-bottom: 2.75rem;
+
+  /* Initial hidden state */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* Step is in viewport */
+.step.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Vertical connector line — mobile only */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 2.75rem;
+  left: 1.375rem;
+  bottom: 0;
+  width: 1.5px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-border) 0,
+    var(--color-border) 5px,
+    transparent 5px,
+    transparent 11px
+  );
+  /* Trail draws top-to-bottom when step becomes visible */
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.5s ease;
+}
+
+/* Draw connector down after the step itself has appeared */
+.step.visible:not(:last-child)::after {
+  clip-path: inset(0 0 0% 0);
+  transition-delay: 280ms;
+}
+
+/* Number circle */
+@keyframes num-pop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  70%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.stepIndicator {
+  flex-shrink: 0;
+  width: 2.75rem;
+}
+
+.stepNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary-dark);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Circle bounces in after step fades in */
+.step.visible .stepNum {
+  animation: num-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 160ms both;
+}
+
+/* Step body */
+.stepBody {
+  padding-top: 0.25rem;
+}
+
+.stepIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 0.375rem;
+  letter-spacing: -0.01em;
+}
+
+.stepDesc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 38ch;
+}
+
+/* Desktop: horizontal row */
+@media (min-width: 768px) {
+  .container {
+    gap: 3.5rem;
+  }
+
+  .stepsGrid {
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    gap: 1rem;
+  }
+
+  /* Horizontal connector draws left→right when .playing fires on the grid */
+  .stepsGrid::before {
+    content: '';
+    position: absolute;
+    top: 1.375rem;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 1.5px;
+    background: repeating-linear-gradient(
+      to right,
+      var(--color-border) 0,
+      var(--color-border) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    z-index: 0;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .playing::before {
+    clip-path: inset(0 0% 0 0);
+  }
+
+  /* No playing → connector draws back right-to-left */
+  .stepsGrid:not(.playing)::before {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  /* Hide mobile vertical connectors */
+  .step::after {
+    display: none !important;
+  }
+
+  /* On desktop all steps enter viewport at the same time,
+     so CSS delays recreate the sequential trail stagger */
+  .step:nth-child(1).visible { transition-delay: 0ms; }
+  .step:nth-child(2).visible { transition-delay: 200ms; }
+  .step:nth-child(3).visible { transition-delay: 400ms; }
+
+  /* Match num-pop to each step's delay */
+  .step:nth-child(1).visible .stepNum { animation-delay: 160ms; }
+  .step:nth-child(2).visible .stepNum { animation-delay: 360ms; }
+  .step:nth-child(3).visible .stepNum { animation-delay: 560ms; }
+
+  .step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 0;
+    padding-inline: 0.5rem;
+  }
+
+  .stepIndicator {
+    display: flex;
+    justify-content: center;
+  }
+
+  .stepBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.25rem;
+  }
+
+  .stepIconWrap {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .stepDesc {
+    max-width: 26ch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stepsGrid {
+    gap: 2rem;
+  }
+
+  .step {
+    padding-inline: 1.5rem;
+  }
+
+  .stepIconWrap {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+/* Reduced motion: no transitions, instant reveal */
+@media (prefers-reduced-motion: reduce) {
+  .step {
+    transition: none;
+    opacity: 0;
+  }
+
+  .step.visible {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0ms !important;
+  }
+
+  .step.visible .stepNum {
+    animation: none;
+    opacity: 1;
+  }
+
+  .step:not(:last-child)::after {
+    transition: none;
+  }
+
+  .step.visible:not(:last-child)::after {
+    clip-path: inset(0 0 0% 0);
+    transition-delay: 0ms;
+  }
+
+  .stepsGrid::before {
+    transition: none !important;
+  }
+
+  .playing::before {
+    clip-path: inset(0 0% 0 0);
+  }
+}
