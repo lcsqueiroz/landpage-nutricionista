@@ -1,4 +1,4 @@
-/* ─── Reset ─────────────────────────────────────────────────────────────── */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -38,7 +38,7 @@ ol {
   list-style: none;
 }
 
-/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+/* Design Tokens */
 :root {
   /* --- Cores primárias --------------------------------------------------- */
   --color-primary: #2e7d32;
@@ -51,19 +51,19 @@ ol {
   --color-accent-hover: #b87a10;
 
   /* --- Superfícies (paleta sálvia quente — sem branco puro) -------------- */
-  --color-bg: #e5ead8; /* sálvia base — fundo da página          */
-  --color-surface: #edf1e3; /* sálvia clara — cards, header solid     */
-  --color-surface-2: #dde3ce; /* sálvia média — inputs, painéis         */
-  --color-border: #c6cfb6; /* borda sálvia suave                     */
+  --color-bg: #e5ead8; /* sálvia base — fundo da página */
+  --color-surface: #edf1e3; /* sálvia clara — cards, header solid */
+  --color-surface-2: #dde3ce; /* sálvia média — inputs, painéis */
+  --color-border: #c6cfb6; /* borda sálvia suave */
 
   /* --- Glass (usados em backdrop-filter) --------------------------------- */
-  --glass-bg: rgba(229, 234, 216, 0.905); /* blur sobre fundo         */
+  --glass-bg: rgba(229, 234, 216, 0.905); /* blur sobre fundo */
   --glass-border: rgba(198, 207, 182, 0.5);
 
   /* --- Texto ------------------------------------------------------------- */
-  --color-text: #1c2b1e; /* verde-quase-preto                    */
-  --color-text-muted: #4a5c42; /* verde médio                          */
-  --color-text-subtle: #7d9170; /* verde-cinza suave                    */
+  --color-text: #1c2b1e; /* verde-quase-preto */
+  --color-text-muted: #4a5c42; /* verde médio */
+  --color-text-subtle: #7d9170; /* verde-cinza suave */
 
   /* --- Feedback ---------------------------------------------------------- */
   --color-error: #c62828;
@@ -117,7 +117,7 @@ ol {
   --header-height: 64px;
 }
 
-/* ─── Base ───────────────────────────────────────────────────────────────── */
+/* Base */
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
@@ -128,19 +128,19 @@ body {
   min-height: 100dvh;
 }
 
-/* ─── Focus acessível ────────────────────────────────────────────────────── */
+/* Focus acessível */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ─── Scroll offset para header fixo ─────────────────────────────────────── */
+/* Scroll offset para header fixo */
 :target {
   scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
-/* ─── Scroll reveal ──────────────────────────────────────────────────────── */
+/* Scroll reveal */
 @keyframes anim-fade-up {
   from {
     opacity: 0;
@@ -190,7 +190,7 @@ body {
     var(--anim-delay, 0ms) both;
 }
 
-/* ─── Shimmer sweep ──────────────────────────────────────────────────────── */
+/* Shimmer sweep */
 @keyframes shimmer-sweep {
   0% {
     transform: translateX(-120%) skewX(-18deg);
@@ -200,13 +200,13 @@ body {
   }
 }
 
-/* ─── Cursor spotlight (set via JS on :root) ─────────────────────────────── */
+/* Cursor spotlight (set via JS on :root) */
 :root {
   --cx: 50%;
   --cy: 50%;
 }
 
-/* ─── Acessibilidade: sem animações ──────────────────────────────────────── */
+/* Acessibilidade: sem animações */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
