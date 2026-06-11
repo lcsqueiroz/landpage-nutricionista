@@ -52,9 +52,7 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <p className={styles.brandName}>Larissa Genari Sena</p>
-            <p className={styles.brandSub}>
-              Nutricionista · CRN-3 99999/P
-            </p>
+            <p className={styles.brandSub}>Nutricionista · CRN-3 94745</p>
             <p className={styles.brandSub}>
               Atendimento online para todo o Brasil
             </p>
