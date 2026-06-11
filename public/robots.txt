@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://larissagenari.com.br/sitemap.xml
