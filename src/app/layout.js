@@ -26,7 +26,9 @@ export const metadata = {
   ],
   authors: [{ name: 'Larissa Genari Sena' }],
   creator: 'Lucas Queiroz Vieira',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://localhost:3000',
+  ),
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -69,7 +71,7 @@ const schemaOrg = {
       '@type': 'MedicalBusiness',
       name: 'Larissa Genari Sena — Nutricionista',
       description: 'Consultório de nutrição online para todo o Brasil.',
-      url: process.env.NEXT_PUBLIC_SITE_URL,
+      url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://localhost:3000',
       telephone: process.env.NEXT_PUBLIC_WA_NUMBER,
       priceRange: 'R$180–R$400',
       medicalSpecialty: 'Dietetics',
