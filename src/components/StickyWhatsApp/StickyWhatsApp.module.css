@@ -1,0 +1,45 @@
+/* Barra fixa — mobile only */
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--color-primary);
+  padding: 0.875rem var(--container-padding);
+  /* Safe area inset para iPhones com home indicator */
+  padding-bottom: max(0.875rem, env(safe-area-inset-bottom, 0.875rem));
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+  box-shadow: 0 -4px 24px rgba(27, 94, 32, 0.25);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Link */
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Ocultar em desktop */
+@media (min-width: 768px) {
+  .bar {
+    display: none;
+  }
+}
