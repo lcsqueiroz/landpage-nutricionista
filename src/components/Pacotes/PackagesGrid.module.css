@@ -1,0 +1,14 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-cards);
+  /* Extra espaço no topo para a badge do card featured não ser cortada */
+  padding-top: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center; /* cards laterais alinham ao centro vertical do featured */
+  }
+}
