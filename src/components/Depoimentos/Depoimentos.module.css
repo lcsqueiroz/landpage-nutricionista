@@ -1,0 +1,225 @@
+/* Section */
+.section {
+  background: var(--color-bg);
+  padding-top: var(--spacing-section-sm);
+  padding-bottom: var(--spacing-section-sm);
+  overflow: hidden; /* corta o marquee nas bordas */
+}
+
+/* Cabeçalho */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--container-padding);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.sectionLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  max-width: 26ch;
+}
+
+.headingAccent {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.subheading {
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 52ch;
+}
+
+/* Marquee */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marqueeOuter {
+  /* Desfoque nas bordas para suavizar a entrada/saída dos cards */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+/* Pausa ao passar o mouse (desktop) ou focar (acessibilidade) */
+.marqueeOuter:hover .marqueeTrack,
+.marqueeOuter:focus-within .marqueeTrack {
+  animation-play-state: paused;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  padding-inline: 0.75rem;
+  animation: marquee-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+/* Card — visual de post do X */
+.card {
+  flex-shrink: 0;
+  width: clamp(215px, 62vw, 360px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: box-shadow var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card);
+}
+
+/* Cabeçalho do card */
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-primary-dark);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.userHandle {
+  font-size: 0.6875rem;
+  color: var(--color-text-subtle);
+  line-height: 1.2;
+}
+
+.xLogo {
+  flex-shrink: 0;
+  color: var(--color-text-subtle);
+  line-height: 0;
+}
+
+/* Estrelas */
+.stars {
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-top: -0.125rem;
+}
+
+/* Texto do post */
+.tweetText {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.65;
+  flex: 1;
+}
+
+/* Chip de resultado */
+
+/* Rodapé do card */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.4375rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.75rem;
+  color: #e0245e; /* vermelho coração — intencional, lembra o like do X */
+  font-weight: 500;
+  line-height: 1;
+}
+
+.location {
+  font-size: 0.6875rem;
+  color: var(--color-text-subtle);
+}
+
+/* Sem animações (acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-inline: var(--container-padding);
+    justify-content: center;
+  }
+
+  .marqueeOuter {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
