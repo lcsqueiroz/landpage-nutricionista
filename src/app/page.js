@@ -1,20 +1,31 @@
-import styles from "./page.module.css";
+import Header from '@/components/Header/Header';
+import Hero from '@/components/Hero/Hero';
+import Sobre from '@/components/Sobre/Sobre';
+import ComoFunciona from '@/components/ComoFunciona/ComoFunciona';
+import Pacotes from '@/components/Pacotes/Pacotes';
+import Depoimentos from '@/components/Depoimentos/Depoimentos';
+import FAQ from '@/components/FAQ/FAQ';
+import CTAFinal from '@/components/CTAFinal/CTAFinal';
+import Footer from '@/components/Footer/Footer';
+import StickyWhatsApp from '@/components/StickyWhatsApp/StickyWhatsApp';
+import Interactions from '@/components/Interactions/Interactions';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.card}>
-        <span className={styles.badge}>Em construção</span>
-        <h1 className={styles.title}>Nutricionista</h1>
-        <p className={styles.subtitle}>
-          Landing page sendo desenvolvida. Em breve o site estará no ar.
-        </p>
-        <div className={styles.stack}>
-          <span>Next.js</span>
-          <span>CSS Modules</span>
-          <span>Mobile First</span>
-        </div>
-      </div>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Sobre />
+        <ComoFunciona />
+        <Pacotes />
+        <Depoimentos />
+        <FAQ />
+        <CTAFinal />
+      </main>
+      <Footer />
+      <StickyWhatsApp />
+      <Interactions />
+    </>
   );
 }
