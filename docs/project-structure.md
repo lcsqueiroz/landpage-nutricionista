@@ -3,52 +3,53 @@
 ```
 landpage-nutricionista/
 │
-├── app/
-│   ├── layout.js             # Root layout: metadata, JSON-LD, fontes, globals
-│   ├── page.js               # Página principal — compõe todas as seções
-│   ├── globals.css           # Reset, CSS Custom Properties, estilos globais
-│   ├── favicon.ico
-│   └── sitemap.js            # Geração automática do sitemap (/sitemap.xml)
-│
-├── components/
-│   ├── Header/
-│   │   ├── Header.js         # [Client] Scroll listener, menu mobile
-│   │   └── Header.module.css
-│   ├── Hero/
-│   │   ├── Hero.js           # [Server] Headline, CTA, badges de credibilidade
-│   │   └── Hero.module.css
-│   ├── About/
-│   │   ├── About.js          # [Server] Bio, foto, especialidades
-│   │   └── About.module.css
-│   ├── HowItWorks/
-│   │   ├── HowItWorks.js     # [Server] 3 etapas visuais
-│   │   └── HowItWorks.module.css
-│   ├── Packages/
-│   │   ├── Packages.js       # [Server] Grid de cards de pacote
-│   │   ├── PackageCard.js    # [Client] onClick → abre LeadModal
-│   │   └── Packages.module.css
-│   ├── LeadModal/
-│   │   ├── LeadModal.js      # [Client] Modal com formulário nome + objetivo
-│   │   └── LeadModal.module.css
-│   ├── Testimonials/
-│   │   ├── Testimonials.js   # [Server] Grid/carrossel de depoimentos
-│   │   └── Testimonials.module.css
-│   ├── FAQ/
-│   │   ├── FAQ.js            # [Client] Accordion com estado
-│   │   └── FAQ.module.css
-│   ├── FinalCTA/
-│   │   ├── FinalCTA.js       # [Server] Seção de conversão final
-│   │   └── FinalCTA.module.css
-│   ├── Footer/
-│   │   ├── Footer.js         # [Server] Contato, redes sociais, copyright
-│   │   └── Footer.module.css
-│   └── StickyWhatsApp/
-│       ├── StickyWhatsApp.js      # [Client] Barra sticky mobile (IntersectionObserver)
-│       └── StickyWhatsApp.module.css
-│
-├── lib/
-│   ├── whatsapp.js           # buildWhatsAppUrl(), PACKAGES, OBJECTIVES, número
-│   └── testimonials.js       # Array de depoimentos (dados estáticos)
+├── src/
+│   ├── app/
+│   │   ├── layout.js             # Root layout: metadata, JSON-LD, fontes, globals
+│   │   ├── page.js               # Página principal — compõe todas as seções
+│   │   ├── globals.css           # Reset, CSS Custom Properties, estilos globais
+│   │   ├── favicon.ico
+│   │   └── sitemap.js            # Geração automática do sitemap (/sitemap.xml)
+│   │
+│   ├── components/
+│   │   ├── Header/
+│   │   │   ├── Header.js         # [Client] Scroll listener, menu mobile
+│   │   │   └── Header.module.css
+│   │   ├── Hero/
+│   │   │   ├── Hero.js           # [Server] Headline, CTA, badges de credibilidade
+│   │   │   └── Hero.module.css
+│   │   ├── About/
+│   │   │   ├── About.js          # [Server] Bio, foto, especialidades
+│   │   │   └── About.module.css
+│   │   ├── HowItWorks/
+│   │   │   ├── HowItWorks.js     # [Server] 3 etapas visuais
+│   │   │   └── HowItWorks.module.css
+│   │   ├── Packages/
+│   │   │   ├── Packages.js       # [Server] Grid de cards de pacote
+│   │   │   ├── PackageCard.js    # [Client] onClick → abre LeadModal
+│   │   │   └── Packages.module.css
+│   │   ├── LeadModal/
+│   │   │   ├── LeadModal.js      # [Client] Modal com formulário nome + objetivo
+│   │   │   └── LeadModal.module.css
+│   │   ├── Testimonials/
+│   │   │   ├── Testimonials.js   # [Server] Grid/carrossel de depoimentos
+│   │   │   └── Testimonials.module.css
+│   │   ├── FAQ/
+│   │   │   ├── FAQ.js            # [Client] Accordion com estado
+│   │   │   └── FAQ.module.css
+│   │   ├── FinalCTA/
+│   │   │   ├── FinalCTA.js       # [Server] Seção de conversão final
+│   │   │   └── FinalCTA.module.css
+│   │   ├── Footer/
+│   │   │   ├── Footer.js         # [Server] Contato, redes sociais, copyright
+│   │   │   └── Footer.module.css
+│   │   └── StickyWhatsApp/
+│   │       ├── StickyWhatsApp.js      # [Client] Barra sticky mobile (IntersectionObserver)
+│   │       └── StickyWhatsApp.module.css
+│   │
+│   └── lib/
+│       ├── whatsapp.js           # buildWhatsAppUrl(), PACKAGES, OBJECTIVES, número
+│       └── testimonials.js       # Array de depoimentos (dados estáticos)
 │
 ├── public/
 │   ├── foto-profissional.jpg  # Hero — proporção 1:1 ou 4:5, mín. 800px
@@ -67,9 +68,11 @@ landpage-nutricionista/
 ├── .env.local                 # Variáveis de ambiente (não versionado)
 ├── .env.example               # Template das variáveis (versionado)
 ├── next.config.mjs
-├── jsconfig.json
+├── jsconfig.json              # paths: { "@/*": ["./src/*"] }
 └── package.json
 ```
+
+> **Alias de importação:** `@/` aponta para `src/`. Usar sempre `@/components/...`, `@/lib/...` — nunca caminhos relativos entre componentes.
 
 ---
 
@@ -79,19 +82,19 @@ landpage-nutricionista/
 
 | Componente | Tipo | Motivo |
 |-----------|------|--------|
-| `layout.js` | Server | Metadata, JSON-LD |
-| `page.js` | Server | Composição estática das seções |
-| `Hero.js` | Server | Conteúdo estático — sem interação |
-| `About.js` | Server | Conteúdo estático |
-| `HowItWorks.js` | Server | Conteúdo estático |
-| `Header.js` | **Client** | Scroll listener, toggle menu mobile |
-| `Packages.js` | Server | Container dos cards |
-| `PackageCard.js` | **Client** | `onClick` abre `LeadModal` |
-| `LeadModal.js` | **Client** | `useState`, `useEffect` (focus trap, Escape) |
-| `FAQ.js` | **Client** | Accordion com `useState` |
-| `Testimonials.js` | Server | Carrossel via CSS puro |
-| `FinalCTA.js` | Server | Conteúdo estático |
-| `StickyWhatsApp.js` | **Client** | `IntersectionObserver` |
+| `src/app/layout.js` | Server | Metadata, JSON-LD |
+| `src/app/page.js` | Server | Composição estática das seções |
+| `Hero/Hero.js` | Server | Conteúdo estático — sem interação |
+| `About/About.js` | Server | Conteúdo estático |
+| `HowItWorks/HowItWorks.js` | Server | Conteúdo estático |
+| `Header/Header.js` | **Client** | Scroll listener, toggle menu mobile |
+| `Packages/Packages.js` | Server | Container dos cards |
+| `Packages/PackageCard.js` | **Client** | `onClick` abre `LeadModal` |
+| `LeadModal/LeadModal.js` | **Client** | `useState`, `useEffect` (focus trap, Escape) |
+| `FAQ/FAQ.js` | **Client** | Accordion com `useState` |
+| `Testimonials/Testimonials.js` | Server | Carrossel via CSS puro |
+| `FinalCTA/FinalCTA.js` | Server | Conteúdo estático |
+| `StickyWhatsApp/StickyWhatsApp.js` | **Client** | `IntersectionObserver` |
 
 > Regra: `'use client'` apenas quando há `useState`, `useEffect` ou event handlers. Maximizar Server Components para SEO e performance.
 
@@ -102,9 +105,9 @@ landpage-nutricionista/
 - Nenhuma biblioteca de estilo externa — CSS puro com custom properties
 - Mobile-first: estilos base para mobile → `@media (min-width: 768px)` → `@media (min-width: 1024px)`
 
-### Dados Estáticos em `lib/`
+### Dados Estáticos em `src/lib/`
 
-Pacotes, depoimentos e objetivos são arrays JavaScript em `lib/`. Não há banco de dados — o conteúdo é estático e compilado no build. Para alterar pacotes ou preços, editar `lib/whatsapp.js` e fazer redeploy.
+Pacotes, depoimentos e objetivos são arrays JavaScript em `src/lib/`. Não há banco de dados — o conteúdo é estático e compilado no build. Para alterar pacotes ou preços, editar `src/lib/whatsapp.js` e fazer redeploy.
 
 ### Variáveis de Ambiente
 

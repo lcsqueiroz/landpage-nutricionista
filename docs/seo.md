@@ -14,7 +14,7 @@
 
 ---
 
-## Metadata (app/layout.js)
+## Metadata (src/app/layout.js)
 
 ```js
 export const metadata = {
@@ -89,7 +89,7 @@ export const metadata = {
 
 ## JSON-LD — Structured Data
 
-Inserir no `app/layout.js` via `<script type="application/ld+json">`.
+Inserir no `src/app/layout.js` via `<script type="application/ld+json">`.
 
 ```json
 {
@@ -141,7 +141,7 @@ Sitemap: https://[dominio].com.br/sitemap.xml
 
 ---
 
-## sitemap.xml (app/sitemap.js)
+## sitemap.xml (src/app/sitemap.js)
 
 ```js
 export default function sitemap() {

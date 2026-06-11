@@ -13,9 +13,12 @@ Site profissional para uma nutricionista. Não é só landing page — apresenta
 # Stack
 
 - **Framework:** Next.js, App Router, JavaScript (sem TypeScript)
+- **Estrutura:** `src/` — todo código vive em `src/app/`, `src/components/`, `src/lib/`
+- **Alias:** `@/` → `src/` (jsconfig.json) — usar sempre, nunca caminhos relativos entre módulos
 - **Estilos:** CSS Modules + CSS Custom Properties (sem Tailwind, sem styled-components)
 - **Fontes:** `next/font` — Playfair Display (headings) + Inter (body)
 - **Imagens:** `next/image` sempre (WebP automático, lazy load, evita CLS)
+- **React Compiler:** ativo (`reactCompiler: true`) — sem `useMemo`/`useCallback` manual
 - **Deploy:** Vercel
 
 ---
@@ -41,14 +44,14 @@ Site profissional para uma nutricionista. Não é só landing page — apresenta
 
 - Cada componente tem seu próprio `.module.css`
 - Nenhuma cor, fonte ou espaçamento definido inline — sempre via variável CSS
-- Tokens em `app/globals.css` (ver seção Design Tokens abaixo)
+- Tokens em `src/app/globals.css` (ver seção Design Tokens abaixo)
 - **Mobile-first:** estilos base para 320px → `@media (min-width: 768px)` → `@media (min-width: 1024px)`
 
 ## Dados Estáticos
 
-Sem banco de dados. Conteúdo em arrays JS em `lib/`:
-- `lib/whatsapp.js` — pacotes, objetivos, função buildWhatsAppUrl()
-- `lib/testimonials.js` — depoimentos
+Sem banco de dados. Conteúdo em arrays JS em `src/lib/`:
+- `src/lib/whatsapp.js` — pacotes, objetivos, função buildWhatsAppUrl()
+- `src/lib/testimonials.js` — depoimentos
 
 ---
 
@@ -76,7 +79,7 @@ Poderia me passar mais informações?
 
 ---
 
-# Design Tokens (globals.css)
+# Design Tokens (src/app/globals.css)
 
 ```css
 /* Cores */

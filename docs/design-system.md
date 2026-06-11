@@ -57,7 +57,7 @@
 }
 ```
 
-**Carregamento via `next/font`** — sem requisição externa, zero layout shift.
+**Carregamento via `next/font` em `src/app/layout.js`** — sem requisição externa, zero layout shift.
 
 ### Escala tipográfica
 

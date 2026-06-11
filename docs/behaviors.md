@@ -49,7 +49,7 @@ Meu principal objetivo é: {objetivo}.
 Poderia me passar mais informações?
 ```
 
-### Implementação — `lib/whatsapp.js`
+### Implementação — `src/lib/whatsapp.js`
 
 ```js
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WA_NUMBER;
