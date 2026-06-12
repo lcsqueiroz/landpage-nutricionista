@@ -28,9 +28,7 @@ export const metadata = {
   ],
   authors: [{ name: 'Larissa Genari Sena' }],
   creator: 'Lucas Queiroz Vieira',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://localhost:3000',
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
