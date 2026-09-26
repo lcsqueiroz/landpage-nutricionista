@@ -1,141 +1,58 @@
-# Estrutura do Projeto
+# Estrutura do projeto
 
 ```
-landpage-nutricionista/
-│
+├── docs/
+│   ├── brand/                  # arquivos originais da marca (logo JPEG/PNG da cliente)
+│   └── *.md                    # documentação
+├── public/
+│   ├── logo/                   # logo vetorizada: script, detail, flesh, seeds (máscaras SVG)
+│   └── robots.txt
+├── scripts/
+│   ├── brand/                  # vetorização da logo e geração de ícones (Python)
+│   ├── og-image/               # gerador da imagem de pré-visualização + fontes
+│   └── qa/                     # testes de fumaça e de contraste AA/AAA (puppeteer + axe)
 ├── src/
 │   ├── app/
-│   │   ├── layout.js             # Root layout: metadata, JSON-LD, fontes, globals
-│   │   ├── page.js               # Página principal — compõe todas as seções
-│   │   ├── globals.css           # Reset, CSS Custom Properties, estilos globais
-│   │   ├── favicon.ico
-│   │   └── sitemap.js            # Geração automática do sitemap (/sitemap.xml)
-│   │
-│   ├── components/
-│   │   ├── Header/
-│   │   │   ├── Header.js         # [Client] Scroll listener, menu mobile
-│   │   │   └── Header.module.css
-│   │   ├── Hero/
-│   │   │   ├── Hero.js           # [Server] Headline, CTA, badges de credibilidade
-│   │   │   └── Hero.module.css
-│   │   ├── About/
-│   │   │   ├── About.js          # [Server] Bio, foto, especialidades
-│   │   │   └── About.module.css
-│   │   ├── HowItWorks/
-│   │   │   ├── HowItWorks.js     # [Server] 3 etapas visuais
-│   │   │   └── HowItWorks.module.css
-│   │   ├── Packages/
-│   │   │   ├── Packages.js       # [Server] Grid de cards de pacote
-│   │   │   ├── PackageCard.js    # [Client] onClick → abre LeadModal
-│   │   │   └── Packages.module.css
-│   │   ├── LeadModal/
-│   │   │   ├── LeadModal.js      # [Client] Modal com formulário nome + objetivo
-│   │   │   └── LeadModal.module.css
-│   │   ├── Testimonials/
-│   │   │   ├── Testimonials.js   # [Server] Grid/carrossel de depoimentos
-│   │   │   └── Testimonials.module.css
-│   │   ├── FAQ/
-│   │   │   ├── FAQ.js            # [Client] Accordion com estado
-│   │   │   └── FAQ.module.css
-│   │   ├── FinalCTA/
-│   │   │   ├── FinalCTA.js       # [Server] Seção de conversão final
-│   │   │   └── FinalCTA.module.css
-│   │   ├── Footer/
-│   │   │   ├── Footer.js         # [Server] Contato, redes sociais, copyright
-│   │   │   └── Footer.module.css
-│   │   └── StickyWhatsApp/
-│   │       ├── StickyWhatsApp.js      # [Client] Barra sticky mobile (IntersectionObserver)
-│   │       └── StickyWhatsApp.module.css
-│   │
-│   └── lib/
-│       ├── whatsapp.js           # buildWhatsAppUrl(), PACKAGES, OBJECTIVES, número
-│       └── testimonials.js       # Array de depoimentos (dados estáticos)
-│
-├── public/
-│   ├── foto-profissional.jpg  # Hero — proporção 1:1 ou 4:5, mín. 800px
-│   ├── foto-consultorio.jpg   # Seção Sobre — proporção 16:9, mín. 1200px
-│   ├── og-image.jpg           # Open Graph — exatamente 1200x630px
-│   └── robots.txt
-│
-├── docs/
-│   ├── sections.md            # Especificação de cada seção da página
-│   ├── behaviors.md           # Fluxos de interação e lógica client-side
-│   ├── design-system.md       # Tokens de design: cores, tipografia, animações
-│   ├── seo.md                 # Estratégia de SEO e structured data
-│   ├── project-structure.md   # Este arquivo
-│   └── content-guide.md       # Guia para a profissional preencher os dados
-│
-├── .env.local                 # Variáveis de ambiente (não versionado)
-├── .env.example               # Template das variáveis (versionado)
-├── next.config.mjs
-├── jsconfig.json              # paths: { "@/*": ["./src/*"] }
-└── package.json
+│   │   ├── layout.js           # fontes, metadata, JSON-LD, Analytics
+│   │   ├── page.js             # composição das seções
+│   │   ├── globals.css         # tokens, reset e utilitários (.btn, .eyebrow, reveal)
+│   │   ├── not-found.js        # página 404
+│   │   ├── politica-de-privacidade/
+│   │   ├── sitemap.js
+│   │   ├── opengraph-image.jpg # imagem de pré-visualização (+ .alt.txt)
+│   │   └── icon.png · apple-icon.png · favicon.ico
+│   ├── assets/                 # fotos (importadas via next/image)
+│   │   └── instagram/          # capas dos posts em destaque
+│   ├── components/             # uma pasta por componente (.js + .module.css)
+│   └── lib/                    # conteúdo e dados estáticos
+├── .env.example
+└── next.config.mjs             # React Compiler + cabeçalhos de segurança
 ```
 
-> **Alias de importação:** `@/` aponta para `src/`. Usar sempre `@/components/...`, `@/lib/...` — nunca caminhos relativos entre componentes.
+## Componentes
 
----
+| Componente | Tipo | Papel |
+|---|---|---|
+| `Header` | client | Logo central, redes à esquerda, menu/CTA à direita, menu mobile |
+| `Hero` + `HeroGL` | server + client | Título, foto em arco e camada WebGL sobre a foto |
+| `Sobre` | server | Apresentação, citação, texto em primeira pessoa e formação |
+| `Servicos` | server | Lista em acordeão (`<details>` nativo) com link de WhatsApp por serviço |
+| `Jornada` | server | "Como funciona": linha do tempo do atendimento |
+| `Instagram` | server | Posts em destaque (dados em `lib/instagram.js`) |
+| `CTAFinal` | server | Chamada final para o WhatsApp |
+| `Footer` | server | Logo, navegação, contato, CRN |
+| `StickyWhatsApp` | client | Botão fixo no mobile (some nos serviços e no CTA) |
+| `Interactions` | client | Motor de animações e rolagem suave (`docs/animations.md`) |
+| `Logo` | server | Logo em camadas, `tone="dark"` ou `"light"` |
+| `Icons` | server | Ícones SVG inline |
 
-## Decisões de Arquitetura
+## `src/lib`
 
-### Server vs Client Components
-
-| Componente | Tipo | Motivo |
-|-----------|------|--------|
-| `src/app/layout.js` | Server | Metadata, JSON-LD |
-| `src/app/page.js` | Server | Composição estática das seções |
-| `Hero/Hero.js` | Server | Conteúdo estático — sem interação |
-| `About/About.js` | Server | Conteúdo estático |
-| `HowItWorks/HowItWorks.js` | Server | Conteúdo estático |
-| `Header/Header.js` | **Client** | Scroll listener, toggle menu mobile |
-| `Packages/Packages.js` | Server | Container dos cards |
-| `Packages/PackageCard.js` | **Client** | `onClick` abre `LeadModal` |
-| `LeadModal/LeadModal.js` | **Client** | `useState`, `useEffect` (focus trap, Escape) |
-| `FAQ/FAQ.js` | **Client** | Accordion com `useState` |
-| `Testimonials/Testimonials.js` | Server | Carrossel via CSS puro |
-| `FinalCTA/FinalCTA.js` | Server | Conteúdo estático |
-| `StickyWhatsApp/StickyWhatsApp.js` | **Client** | `IntersectionObserver` |
-
-> Regra: `'use client'` apenas quando há `useState`, `useEffect` ou event handlers. Maximizar Server Components para SEO e performance.
-
-### CSS Modules
-
-- Cada componente tem seu próprio `.module.css` — sem vazamento de estilos
-- Tokens de design centralizados em `globals.css` via CSS Custom Properties
-- Nenhuma biblioteca de estilo externa — CSS puro com custom properties
-- Mobile-first: estilos base para mobile → `@media (min-width: 768px)` → `@media (min-width: 1024px)`
-
-### Dados Estáticos em `src/lib/`
-
-Pacotes, depoimentos e objetivos são arrays JavaScript em `src/lib/`. Não há banco de dados — o conteúdo é estático e compilado no build. Para alterar pacotes ou preços, editar `src/lib/whatsapp.js` e fazer redeploy.
-
-### Variáveis de Ambiente
-
-| Variável | Obrigatória | Descrição |
-|----------|------------|-----------|
-| `NEXT_PUBLIC_WA_NUMBER` | Sim | Número do WhatsApp (somente dígitos, com DDI) |
-| `NEXT_PUBLIC_SITE_URL` | Sim | URL do site em produção (sem barra final) |
-
----
-
-## Comandos
-
-```bash
-npm run dev      # Desenvolvimento em localhost:3000
-npm run build    # Build de produção
-npm run start    # Servidor de produção (requer build prévio)
-npm run lint     # ESLint
-```
-
----
-
-## Deploy
-
-**Vercel** (zero config para Next.js):
-
-1. Push para GitHub
-2. Importar projeto em [vercel.com/new](https://vercel.com/new)
-3. Adicionar variáveis de ambiente (`NEXT_PUBLIC_WA_NUMBER`, `NEXT_PUBLIC_SITE_URL`) no painel
-4. Configurar domínio customizado em **Settings → Domains**
-5. Após o primeiro deploy em produção, enviar o sitemap ao Google Search Console:
-   `https://seudominio.com.br/sitemap.xml`
+| Arquivo | Conteúdo |
+|---|---|
+| `site.js` | URL do site, nome, título, CRN, Instagram |
+| `whatsapp.js` | Montagem dos links do WhatsApp |
+| `services.js` | Serviços (título, ícone, descrição, tópicos) |
+| `journey.js` | Etapas do "Como funciona" |
+| `education.js` | Formação e pesquisa (bloco dentro do Sobre) |
+| `instagram.js` | Posts em destaque |

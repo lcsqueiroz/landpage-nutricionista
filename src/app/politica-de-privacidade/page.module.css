@@ -1,0 +1,124 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1.25rem var(--container-padding);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logoLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+
+.logoLink .logo {
+  --logo-h: 46px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: color var(--transition-base);
+}
+
+.back:hover {
+  color: var(--color-heading-2);
+}
+
+.main {
+  padding: clamp(3rem, 8vw, 6rem) var(--container-padding) var(--spacing-section-sm);
+}
+
+.article {
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-heading);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--color-heading);
+}
+
+.updated {
+  margin-top: 1rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+}
+
+.lead {
+  margin-top: clamp(2rem, 5vw, 2.5rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3.6vw, 1.5rem);
+  font-weight: var(--weight-heading-soft);
+  line-height: 1.5;
+  color: var(--color-heading-2);
+}
+
+.block {
+  margin-top: clamp(2.25rem, 5vw, 3rem);
+  padding-top: clamp(1.75rem, 4vw, 2.25rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.block h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: var(--weight-heading-2);
+  line-height: 1.2;
+  color: var(--color-heading);
+}
+
+.block p,
+.block li {
+  font-size: var(--text-base);
+  font-weight: var(--weight-text);
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.block p {
+  margin-top: 1rem;
+}
+
+.block ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.block strong {
+  font-weight: var(--weight-label);
+  color: var(--color-text);
+}
+
+.block a {
+  color: var(--color-heading-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer {
+  padding: 2rem var(--container-padding);
+  background: var(--color-footer);
+  color: var(--color-on-dark-muted);
+  font-size: var(--text-xs);
+  text-align: center;
+}

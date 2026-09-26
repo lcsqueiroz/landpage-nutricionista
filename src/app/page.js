@@ -1,10 +1,9 @@
 import Header from '@/components/Header/Header';
 import Hero from '@/components/Hero/Hero';
 import Sobre from '@/components/Sobre/Sobre';
-import ComoFunciona from '@/components/ComoFunciona/ComoFunciona';
-import Pacotes from '@/components/Pacotes/Pacotes';
-import Depoimentos from '@/components/Depoimentos/Depoimentos';
-import FAQ from '@/components/FAQ/FAQ';
+import Servicos from '@/components/Servicos/Servicos';
+import Jornada from '@/components/Jornada/Jornada';
+import Instagram from '@/components/Instagram/Instagram';
 import CTAFinal from '@/components/CTAFinal/CTAFinal';
 import Footer from '@/components/Footer/Footer';
 import StickyWhatsApp from '@/components/StickyWhatsApp/StickyWhatsApp';
@@ -17,10 +16,9 @@ export default function Home() {
       <main>
         <Hero />
         <Sobre />
-        <ComoFunciona />
-        <Pacotes />
-        <Depoimentos />
-        <FAQ />
+        <Servicos />
+        <Jornada />
+        <Instagram />
         <CTAFinal />
       </main>
       <Footer />
