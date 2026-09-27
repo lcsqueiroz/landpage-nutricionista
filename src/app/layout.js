@@ -24,13 +24,14 @@ const roboto = Roboto({
 
 export const metadata = {
   title: {
-    default: 'Larissa Genari | Nutricionista',
+    default: 'Larissa Genari | Nutricionista online e reeducação alimentar',
     template: '%s | Larissa Genari — Nutricionista',
   },
   description:
-    'Nutricionista. Cuidado com a saúde através da alimentação: nutrição clínica, reeducação alimentar e emagrecimento saudável. Atendimento online. CRN-3 94745.',
+    'Nutricionista online (CRN-3 94745). Acompanhamento em nutrição clínica, reeducação alimentar e emagrecimento saudável, com um plano que cabe na sua rotina.',
   keywords: [
     'nutricionista',
+    'nutricionista online',
     'consulta nutricional',
     'nutrição clínica',
     'plano alimentar personalizado',
@@ -41,19 +42,20 @@ export const metadata = {
   authors: [{ name: 'Larissa Genari' }],
   creator: 'Lucas Queiroz Vieira',
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: '/' },
   // Sem `images`: o Next usa o arquivo estático src/app/opengraph-image.jpg
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     url: '/',
     siteName: 'Larissa Genari | Nutricionista',
-    title: 'Larissa Genari | Nutricionista',
+    title: 'Larissa Genari | Nutricionista online e reeducação alimentar',
     description:
       'Comer bem sem virar a sua vida do avesso. Acompanhamento nutricional online, com um plano que cabe na sua rotina.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Larissa Genari | Nutricionista',
+    title: 'Larissa Genari | Nutricionista online e reeducação alimentar',
     description:
       'Comer bem sem virar a sua vida do avesso. Acompanhamento nutricional online, com um plano que cabe na sua rotina.',
   },

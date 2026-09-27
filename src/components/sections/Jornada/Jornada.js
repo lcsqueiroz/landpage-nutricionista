@@ -26,7 +26,7 @@ export default function Jornada() {
           <header className={styles.header}>
             <h2 id="jornada-heading" className={styles.heading} data-anim="lines">
               <span className="maskLine">
-                <span>Como funciona o</span>
+                <span>Como funciona o </span>
               </span>
               <span className="maskLine">
                 <span>acompanhamento</span>

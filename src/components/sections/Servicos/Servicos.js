@@ -15,7 +15,7 @@ export default function Servicos() {
         <header className={styles.intro}>
           <h2 id="servicos-heading" className={styles.heading} data-anim="lines">
             <span className="maskLine">
-              <span>Como posso</span>
+              <span>Como posso </span>
             </span>
             <span className="maskLine" style={{ '--line-delay': '120ms' }}>
               <span>te acompanhar</span>
@@ -60,7 +60,7 @@ export default function Servicos() {
                   <span className={styles.thumb} aria-hidden="true">
                     <Image
                       src={service.image}
-                      alt=""
+                      alt={service.imageAlt}
                       fill
                       sizes="(max-width: 767px) 64px, 88px"
                       className={styles.thumbImg}

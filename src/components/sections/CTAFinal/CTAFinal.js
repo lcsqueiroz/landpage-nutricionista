@@ -20,13 +20,13 @@ export default function CTAFinal() {
       aria-labelledby="cta-heading"
     >
       <div className={styles.bg} aria-hidden="true">
-        <Image src={pratoImg} alt="" fill sizes="100vw" className={styles.bgImg} />
+        <Image src={pratoImg} alt="Prato de salada com flores comestíveis sobre mesa escura" fill sizes="100vw" className={styles.bgImg} />
       </div>
 
       <div className={styles.container}>
         <h2 id="cta-heading" className={styles.heading} data-anim="lines">
           <span className="maskLine">
-            <span>Vamos conversar</span>
+            <span>Vamos conversar </span>
           </span>
           <span className="maskLine">
             <span>
