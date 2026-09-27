@@ -1,4 +1,4 @@
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://larissagenari.com.br';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.larigenari.com.br';
 
 export const PROFESSIONAL = {
   name: 'Larissa Genari',

@@ -29,7 +29,7 @@ npm run dev                  # http://localhost:3000
 | Variável | Obrigatória | Descrição |
 |---|---|---|
 | `NEXT_PUBLIC_WA_NUMBER` | Sim (produção) | WhatsApp com DDI e DDD, só dígitos |
-| `NEXT_PUBLIC_SITE_URL` | Não | URL pública; padrão `https://larissagenari.com.br` |
+| `NEXT_PUBLIC_SITE_URL` | Não | URL pública; padrão `https://www.larigenari.com.br` |
 
 ## Documentação
 
