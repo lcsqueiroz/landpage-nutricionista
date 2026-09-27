@@ -1,0 +1,118 @@
+/* Design tokens — paleta da melancia, 60-30-10 (ver docs/design-system.md) */
+:root {
+  --color-primary: #2c3a31;
+  --color-primary-dark: #131b16; /* verde quase preto — cor de peso */
+
+  /* --- Acento (coral da melancia da logo) — 10%, sem texto pequeno em fundo claro --- */
+  --color-accent: #c25a50;
+  --color-accent-light: #eba59b; /* sobre fundo escuro: 8,7:1 */
+  --color-accent-pale: #f9e3df;
+  --color-accent-hover: #a8473e;
+  --color-accent-glow: rgba(194, 90, 80, 0.08);
+
+  /* --- Logo: cores próprias, independentes do acento ---------------------- */
+  --color-logo-role: #4f4028; /* "Nutricionista" em bronze escuro — AAA */
+  --color-logo-role-on-dark: #cbb48a;
+
+  --color-bg: #ffffff;
+  --color-surface: #ffffff; /* cartões sobre seções tingidas ou escuras */
+  --color-surface-2: #f1f4ef; /* cinza-esverdeado leve — seções alternadas, chips */
+  --color-sand: #e6ebe3; /* fundo enquanto a foto carrega */
+
+  /* --- Hierarquia de fundos das seções: neutros frios, sem bege ------------- */
+  --color-section-soft: #f3f5f2; /* nível 2: off-white neutro (Instagram) */
+  --color-section-strong: #eff2ed; /* nível 3: cinza-sálvia bem sutil (Sobre) — só o bastante para diferir do branco */
+  --pattern-opacity: 0.07; /* textura de frutas (Sobre; ~70% disso nos cartões dos Serviços) */
+  --color-on-dark: #f6f7f3;
+  --color-on-dark-muted: rgba(246, 247, 243, 0.74); /* AAA (≥ 7:1) nos fundos escuros */
+  --color-dark-glass: rgba(19, 27, 22, 0.94);
+  --color-overlay: rgba(19, 27, 22, 0.38);
+
+  /* --- Texto: hierarquia sutil de verdes (AAA ≥ 7:1 em bg, surface e surface-2) --- */
+  --color-heading: #1b2d21; /* 1. títulos principais (h1, h2) — 13:1 */
+  --color-heading-2: #2e4838; /* 2. subtítulos, cards, itálicos — 9:1 */
+  --color-text: #22312a; /* 3. texto de destaque, menu, links — 12:1 */
+  --color-text-muted: #404e44; /* 4. parágrafos — 7,9:1 */
+  --color-label: #3c4e41; /* 5. rótulos pequenos — 8:1 */
+  --color-text-subtle: #454d46; /* 6. datas, observações — 7,9:1 */
+
+  /* --- Melancia da logo: cores naturais, dessaturadas --------------------- */
+  --color-melon-flesh: #c25a50;
+  --color-melon-rind: #6e8a5e;
+  --color-melon-flesh-on-dark: #d4736a;
+  --color-melon-rind-on-dark: #8fac80;
+
+  --color-footer: #0c120e;
+
+  --font-heading: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --font-body: var(--font-roboto), 'Roboto', system-ui, sans-serif;
+
+  --weight-heading: 460;
+  --weight-heading-2: 540; /* títulos pequenos (≤ 2rem) */
+  --weight-heading-soft: 380; /* itálicos de apoio, assinatura, numerais decorativos */
+
+  --weight-text: 400;
+  --weight-label: 500; /* rótulos em caixa-alta, navegação, destaques */
+  --weight-action: 600; /* botões, links de ação e marcadores */
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+
+  --text-h2: clamp(2.25rem, 6.6vw, 4.25rem);
+  --text-eyebrow: 0.6875rem;
+  --tracking-eyebrow: 0.32em;
+
+  --spacing-section: clamp(3.5rem, 8vw, 6.5rem);
+  --spacing-section-sm: clamp(2.25rem, 5vw, 3.5rem);
+  --container-max: 1280px;
+  --container-padding: clamp(1.25rem, 5vw, 3rem);
+  --gap-cards: clamp(1rem, 2.5vw, 1.5rem);
+
+  /* Cantos quase retos: arredondado demais passa ar de template */
+  --radius-sm: 2px;
+  --radius-card: 3px;
+
+  --shadow-float: 0 20px 40px -16px rgba(12, 18, 14, 0.55);
+  --veil-photo: linear-gradient(
+    180deg,
+    rgba(203, 180, 138, 0.06) 0%,
+    transparent 40%,
+    rgba(19, 27, 22, 0.3) 100%
+  );
+  --veil-food: linear-gradient(
+    180deg,
+    rgba(12, 18, 14, 0.08) 0%,
+    rgba(12, 18, 14, 0.32) 42%,
+    rgba(12, 18, 14, 0.88) 100%
+  ); /* texto claro sobre foto de comida, sem apagar as cores no topo */
+  --veil-hero-wide: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.9) 14%,
+    rgba(255, 255, 255, 0) 38%
+  ); /* emenda a foto do Hero (desktop) com o fundo branco à esquerda */
+  --veil-dark-photo: linear-gradient(
+    180deg,
+    rgba(19, 27, 22, 0.55) 0%,
+    rgba(19, 27, 22, 0.78) 55%,
+    rgba(19, 27, 22, 0.94) 100%
+  ); /* foto como textura sob um painel verde-escuro */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 250ms ease;
+  --transition-slow: 450ms var(--ease-out);
+  --transition-layout: 700ms var(--ease-out);
+
+  --header-height: 72px;
+
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 96px;
+  }
+}

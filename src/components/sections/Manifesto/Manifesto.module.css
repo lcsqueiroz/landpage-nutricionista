@@ -1,0 +1,58 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(60svh, 520px);
+  padding: var(--spacing-section-sm) var(--container-padding);
+  overflow: hidden;
+  background: var(--color-primary-dark);
+  color: var(--color-on-dark);
+}
+
+.img {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Escurece a base, onde fica a frase, e mantém a comida viva no topo */
+.section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--veil-food);
+}
+
+.content {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.quote {
+  max-width: 20ch;
+  font-family: var(--font-heading);
+  font-size: clamp(1.875rem, 7.4vw, 4rem);
+  font-style: italic;
+  font-weight: var(--weight-heading-soft);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-on-dark);
+}
+
+.author {
+  margin-top: 1.5rem;
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-label);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-on-dark);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    min-height: min(66svh, 600px);
+  }
+}

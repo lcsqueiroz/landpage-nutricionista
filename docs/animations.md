@@ -1,37 +1,29 @@
 # Animações
 
-Tudo sem bibliotecas, em `src/components/Interactions/`. Com `prefers-reduced-motion`, reveals aparecem direto e os efeitos por scroll ficam em valores neutros.
+**Modo calmo:** o site quase não se mexe. Nada acompanha a rolagem (sem parallax, recortes, zoom ou painéis que se expandem) e não há WebGL. Isso foi uma decisão: efeitos demais deixavam o site com cara artificial.
+
+O que sobrou, sem bibliotecas:
+
+| Onde | Efeito |
+|---|---|
+| Blocos com `data-anim` | fade curto (600ms, sobe 12px) ao entrar na tela |
+| Texto do Hero | fade de 600ms no carregamento; a foto já nasce pronta (bom para o LCP) |
+| Serviços | abrir/fechar do acordeão (`<details>`), altura animada onde o navegador suporta |
+| Menu mobile | fade de 300ms |
+| Header | some ao rolar para baixo e volta ao rolar para cima |
+
+Com `prefers-reduced-motion`, tudo aparece direto.
 
 ## Reveal — `data-anim`
 
-Elementos com `data-anim` ganham `.is-visible` ao entrar na tela (IntersectionObserver). Elementos pulados por saltos de scroll também são revelados.
+Em `src/components/behavior/Interactions/`: elementos com `data-anim` ganham `.is-visible` ao entrar na tela (IntersectionObserver). Elementos pulados por saltos de scroll também são revelados. Todos os valores (`fade-up`, `lines`) fazem o mesmo fade; `.maskLine` só agrupa linhas de título, sem máscara.
 
-| Valor | Efeito |
-|---|---|
-| `fade-up` | sobe e aparece |
-| `blur-in` | desfoca → nítido |
-| `scale-in` | cresce levemente |
-| `lines` | o contêiner fica visível; os filhos `.maskLine` sobem |
-
-Atraso: `style={{ '--anim-delay': '120ms' }}` (ou `--line-delay` em `.maskLine`).
-
-## Progresso de scroll — `data-progress`
-
-O elemento recebe `--p` (0 → 1), atualizado a cada frame de rolagem enquanto está perto da tela, preso direto à posição (sem suavização). O CSS usa `--p` para parallax, máscaras, escalas etc.
-
-| Modo | 0 | 1 |
-|---|---|---|
-| `view` (padrão) | topo entra por baixo | base sai por cima |
-| `enter` | topo entra por baixo | elemento todo visível |
-| `exit` | topo alinhado ao topo da tela | elemento saiu por completo |
-| `pin` | início do trecho fixo | fim do trecho fixo |
-
-`--page-progress` no `:root` alimenta a barra de leitura do header.
+Atraso: `style={{ '--anim-delay': '120ms' }}`.
 
 ## Rolagem
 
-Nativa do navegador em todos os dispositivos (a rolagem suave própria da roda do mouse foi removida por parecer artificial). Âncoras internas deslizam pelo `scroll-behavior: smooth` do CSS.
+Nativa do navegador em todos os dispositivos. Âncoras internas deslizam pelo `scroll-behavior: smooth` do CSS.
 
-## WebGL — `HeroGL`
+## Antes de adicionar um efeito
 
-Shader próprio sobre a foto do Hero (grão e tratamento de cor; a foto não se move com o scroll). Pausa fora da tela e com a aba oculta; sem WebGL, a `<img>` continua visível. Só inicia na primeira interação (ou após 6s) para não pesar no carregamento.
+Evitar qualquer coisa ligada à posição do scroll, animações longas (> 600ms) ou em loop. Se precisar chamar atenção, usar cor, foto e espaço, não movimento.

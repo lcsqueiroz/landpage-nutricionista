@@ -8,48 +8,72 @@ export const alt = 'Larissa Genari — Nutricionista';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+// Espelha os tokens de src/styles/tokens.css (o ImageResponse não lê variáveis CSS)
 const COLORS = {
-  bg: '#f6f3ee', // --color-bg
-  glow: '#ece6db', // brilho suave atrás da foto
+  bg: '#ffffff', // --color-bg
   heading: '#1b2d21', // --color-heading
   heading2: '#2e4838', // --color-heading-2
-  muted: '#4b5c50', // --color-text-muted
-  label: '#56685a', // --color-label
-  accent: '#a88a58', // --color-accent
-  accentLight: '#cbb48a', // --color-accent-light
+  muted: '#404e44', // --color-text-muted
+  label: '#3c4e41', // --color-label
+  accent: '#c25a50', // --color-accent (polpa da melancia)
 };
 
-const photoPath = join(process.cwd(), 'src', 'assets', 'larissa-03.jpg');
+// Foto original (não a versão redesenhada por IA): a capa circula em cache de WhatsApp/Facebook e não depende do parecer do CRN
+const photoPath = join(process.cwd(), 'src', 'assets', 'images', 'larissa', 'original-03.jpg');
 const font = (name) => join(process.cwd(), 'scripts', 'og-image', 'fonts', name);
 
 export default async function Image() {
-  const [photo, cormorant, cormorantItalic, inter] = await Promise.all([
+  const [photo, fraunces, frauncesItalic, roboto] = await Promise.all([
     readFile(photoPath, 'base64'),
-    readFile(font('CormorantGaramond-Medium.woff')),
-    readFile(font('CormorantGaramond-MediumItalic.woff')),
-    readFile(font('Inter-Medium.woff')),
+    readFile(font('Fraunces-Medium.woff')),
+    readFile(font('Fraunces-Italic.woff')),
+    readFile(font('Roboto-Medium.woff')),
   ]);
 
   return new ImageResponse(
     (
       <div
         style={{
+          position: 'relative',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 96px',
-          background: `radial-gradient(circle at 78% 30%, ${COLORS.glow} 0%, ${COLORS.bg} 60%)`,
+          background: COLORS.bg,
         }}
       >
-        {/* Texto */}
-        <div style={{ display: 'flex', flexDirection: 'column', width: 560 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse não aceita next/image */}
+        <img
+          src={`data:image/jpeg;base64,${photo}`}
+          width={560}
+          height={630}
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            objectFit: 'cover',
+            objectPosition: '45% 30%',
+          }}
+          alt=""
+        />
+        {/* Emenda da foto com o fundo branco, longe do rosto */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 400,
+            width: 160,
+            height: 630,
+            background: `linear-gradient(90deg, ${COLORS.bg} 0%, rgba(255, 255, 255, 0) 100%)`,
+          }}
+        />
+
+        <div style={{ display: 'flex', flexDirection: 'column', width: 620, paddingLeft: 88 }}>
           <div
             style={{
-              fontFamily: 'Inter',
-              fontSize: 20,
-              letterSpacing: 7,
+              fontFamily: 'Roboto',
+              fontSize: 19,
+              letterSpacing: 6,
               color: COLORS.label,
             }}
           >
@@ -58,8 +82,8 @@ export default async function Image() {
           <div
             style={{
               marginTop: 18,
-              fontFamily: 'Cormorant',
-              fontSize: 112,
+              fontFamily: 'Fraunces',
+              fontSize: 100,
               lineHeight: 1,
               letterSpacing: -2,
               color: COLORS.heading,
@@ -68,68 +92,39 @@ export default async function Image() {
             Nutricionista
           </div>
           <div
-            style={{ marginTop: 34, width: 76, height: 2, background: COLORS.accent }}
-          />
-          <div
             style={{
               marginTop: 30,
-              fontFamily: 'Cormorant Italic',
-              fontSize: 42,
+              fontFamily: 'Fraunces Italic',
+              fontSize: 40,
               lineHeight: 1.25,
               color: COLORS.heading2,
-              maxWidth: 520,
+              maxWidth: 480,
             }}
           >
-            Transforme sua relação com a alimentação.
+            Comer bem sem virar a sua vida do avesso.
           </div>
           <div
             style={{
+              display: 'flex',
+              alignItems: 'center',
               marginTop: 40,
-              fontFamily: 'Inter',
+              fontFamily: 'Roboto',
               fontSize: 20,
               letterSpacing: 1,
               color: COLORS.muted,
             }}
           >
-            Atendimento online · CRN-3 94745
-          </div>
-        </div>
-
-        {/* Foto em arco com contorno dourado deslocado */}
-        <div style={{ display: 'flex', position: 'relative', width: 390, height: 520 }}>
-          <div
-            style={{
-              position: 'absolute',
-              top: -14,
-              left: 22,
-              width: 390,
-              height: 500,
-              border: `1.5px solid ${COLORS.accentLight}`,
-              borderRadius: '195px 195px 3px 3px',
-            }}
-          />
-          <div
-            style={{
-              display: 'flex',
-              width: 390,
-              height: 520,
-              overflow: 'hidden',
-              borderRadius: '195px 195px 3px 3px',
-              boxShadow: '0 30px 60px -20px rgba(12, 18, 14, 0.45)',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse não aceita next/image */}
-            <img
-              src={`data:image/jpeg;base64,${photo}`}
-              width={390}
-              height={520}
+            {/* Ponto coral: a polpa da melancia, o acento de 10% */}
+            <div
               style={{
-                objectFit: 'cover',
-                objectPosition: '45% 50%',
-                borderRadius: '195px 195px 3px 3px',
+                width: 10,
+                height: 10,
+                marginRight: 14,
+                borderRadius: 5,
+                background: COLORS.accent,
               }}
-              alt=""
             />
+            Atendimento online · CRN-3 94745
           </div>
         </div>
       </div>
@@ -137,9 +132,9 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: 'Cormorant', data: cormorant, style: 'normal', weight: 500 },
-        { name: 'Cormorant Italic', data: cormorantItalic, style: 'italic', weight: 500 },
-        { name: 'Inter', data: inter, style: 'normal', weight: 500 },
+        { name: 'Fraunces', data: fraunces, style: 'normal', weight: 500 },
+        { name: 'Fraunces Italic', data: frauncesItalic, style: 'italic', weight: 400 },
+        { name: 'Roboto', data: roboto, style: 'normal', weight: 500 },
       ],
     }
   );

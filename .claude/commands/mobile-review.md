@@ -19,16 +19,17 @@ Revise o componente ou seção indicado. A maioria dos visitantes vem pelo Insta
 
 ### Tipografia e cor
 - [ ] Corpo ≥ 16px, secundário ≥ 14px, line-height ≥ 1.5
-- [ ] Cores da hierarquia de texto (`--color-heading` … `--color-label`), contraste AA
+- [ ] Cores da hierarquia de texto (`--color-heading` … `--color-label`), contraste AAA
 
 ### Movimento
-- [ ] Efeitos por scroll (`data-progress`) não escondem conteúdo antes de ser lido no mobile
+- [ ] Só fades curtos (`data-anim`); nada ligado à rolagem, nada em loop (modo calmo)
 - [ ] `prefers-reduced-motion` respeitado
 
 ### Específicos
-- [ ] Header: logo legível sobre a foto do Hero; menu mobile abre e fecha sem artefatos
-- [ ] Hero: foto em tela cheia e título sobre o esmaecido
-- [ ] Serviços: cards empilhados sem sobreposição do botão fixo
+- [ ] Header: faixa sólida branca, logo legível; menu mobile abre e fecha sem artefatos
+- [ ] Hero: foto de ponta a ponta no topo e título sobre o esmaecido
+- [ ] Serviços: acordeão abre/fecha sem ficar coberto pelo botão fixo do WhatsApp
+- [ ] Sobre: foto na largura do conteúdo, margens iguais dos dois lados
 
 ## Como usar
 

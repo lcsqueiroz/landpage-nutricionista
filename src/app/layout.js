@@ -1,15 +1,18 @@
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Cormorant_Garamond, Roboto } from 'next/font/google';
-import { SERVICES } from '@/lib/services';
-import { INSTAGRAM_URL, PROFESSIONAL, SITE_URL } from '@/lib/site';
-import './globals.css';
+import { Fraunces, Roboto } from 'next/font/google';
+import { SERVICES } from '@/content/services';
+import { INSTAGRAM_URL, PROFESSIONAL, SITE_URL } from '@/config/site';
+import '@/styles/tokens.css';
+import '@/styles/base.css';
+import '@/styles/utilities.css';
 
-// Fontes variáveis (sem `weight`): os pesos fixos da Cormorant quebram no Turbopack
-const cormorant = Cormorant_Garamond({
+// Fontes variáveis (sem `weight`): um arquivo cobre todos os pesos dos tokens --weight-*
+const fraunces = Fraunces({
   subsets: ['latin'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  axes: ['opsz', 'SOFT'],
+  variable: '--font-fraunces',
   display: 'swap',
 });
 
@@ -25,21 +28,20 @@ export const metadata = {
     template: '%s | Larissa Genari — Nutricionista',
   },
   description:
-    'Nutricionista. Cuidado com a saúde através da alimentação: nutrição clínica, reeducação alimentar, emagrecimento saudável e nutrição esportiva. Atendimento online. CRN-3 94745.',
+    'Nutricionista. Cuidado com a saúde através da alimentação: nutrição clínica, reeducação alimentar e emagrecimento saudável. Atendimento online. CRN-3 94745.',
   keywords: [
     'nutricionista',
     'consulta nutricional',
     'nutrição clínica',
     'plano alimentar personalizado',
     'emagrecimento saudável',
-    'nutrição esportiva',
     'reeducação alimentar',
     'Larissa Genari',
   ],
   authors: [{ name: 'Larissa Genari' }],
   creator: 'Lucas Queiroz Vieira',
   metadataBase: new URL(SITE_URL),
-  // A imagem de pré-visualização vem de src/app/opengraph-image.js
+  // Sem `images`: o Next usa o arquivo estático src/app/opengraph-image.jpg
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -47,13 +49,13 @@ export const metadata = {
     siteName: 'Larissa Genari | Nutricionista',
     title: 'Larissa Genari | Nutricionista',
     description:
-      'Transforme sua relação com a alimentação. Saúde que começa no prato, com um plano feito para a sua rotina.',
+      'Comer bem sem virar a sua vida do avesso. Acompanhamento nutricional online, com um plano que cabe na sua rotina.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Larissa Genari | Nutricionista',
     description:
-      'Transforme sua relação com a alimentação. Saúde que começa no prato, com um plano feito para a sua rotina.',
+      'Comer bem sem virar a sua vida do avesso. Acompanhamento nutricional online, com um plano que cabe na sua rotina.',
   },
   robots: {
     index: true,
@@ -90,7 +92,7 @@ const schemaOrg = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${roboto.variable}`}>
+    <html lang="pt-BR" className={`${fraunces.variable} ${roboto.variable}`}>
       <head>
         <script
           type="application/ld+json"

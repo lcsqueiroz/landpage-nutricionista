@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import Logo from '@/components/Logo/Logo';
-import { PROFESSIONAL } from '@/lib/site';
-import { buildHeroWhatsAppUrl } from '@/lib/whatsapp';
+import Logo from '@/components/ui/Logo/Logo';
+import { DEVELOPER, PROFESSIONAL } from '@/config/site';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -11,11 +10,9 @@ export const metadata = {
   alternates: { canonical: '/politica-de-privacidade' },
 };
 
-const UPDATED_AT = '24 de setembro de 2026';
+const UPDATED_AT = '26 de setembro de 2026';
 
 export default function PoliticaDePrivacidade() {
-  const whatsappUrl = buildHeroWhatsAppUrl();
-
   return (
     <>
       <header className={styles.topbar}>
@@ -34,21 +31,21 @@ export default function PoliticaDePrivacidade() {
           <p className={styles.updated}>Última atualização: {UPDATED_AT}</p>
 
           <p className={styles.lead}>
-            Este site existe para apresentar o meu trabalho e facilitar o seu
-            contato comigo. Ele foi feito para coletar o mínimo possível de
-            informações. Aqui eu explico, de forma simples, o que é coletado e
-            por quê, conforme a Lei Geral de Proteção de Dados (Lei nº
-            13.709/2018 — LGPD).
+            Este site existe para apresentar o trabalho da nutricionista{' '}
+            {PROFESSIONAL.name} e facilitar o seu contato com ela. Ele foi feito
+            para coletar o mínimo possível de informações. Aqui explicamos, de
+            forma simples, o que é coletado e por quê, conforme a Lei Geral de
+            Proteção de Dados (Lei nº 13.709/2018 — LGPD).
           </p>
 
           <section className={styles.block}>
             <h2>1. Quem é responsável</h2>
             <p>
-              O responsável pelo tratamento dos dados deste site é Larissa
-              Genari, nutricionista (CRN-3 94745). Para qualquer assunto sobre
-              privacidade, o contato é pelo{' '}
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                WhatsApp
+              O responsável pelo tratamento dos dados coletados por este site é{' '}
+              {DEVELOPER.name}, desenvolvedor do site. Para qualquer assunto
+              sobre privacidade, o contato é pelo site{' '}
+              <a href={DEVELOPER.url} target="_blank" rel="noopener noreferrer">
+                lcsqueiroz.com.br
               </a>
               .
             </p>
@@ -91,9 +88,9 @@ export default function PoliticaDePrivacidade() {
               Instagram.
             </p>
             <p>
-              As informações que você compartilhar comigo durante o
-              atendimento são tratadas com sigilo profissional, conforme o
-              Código de Ética do Nutricionista.
+              As informações que você compartilhar com a nutricionista durante
+              o atendimento são tratadas por ela com sigilo profissional,
+              conforme o Código de Ética do Nutricionista.
             </p>
           </section>
 
@@ -116,8 +113,8 @@ export default function PoliticaDePrivacidade() {
               sobre o tratamento dos seus dados, correção, eliminação ou
               revogação de consentimento (art. 18). Como este site não guarda
               dados que identifiquem você, na prática não há informações
-              pessoais armazenadas aqui. Se tiver qualquer dúvida, é só me
-              chamar.
+              pessoais armazenadas aqui. Se tiver qualquer dúvida, entre em
+              contato pelo canal indicado no item 1.
             </p>
           </section>
 
@@ -132,7 +129,16 @@ export default function PoliticaDePrivacidade() {
       </main>
 
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} {PROFESSIONAL.name} · {PROFESSIONAL.title} · {PROFESSIONAL.crn}</p>
+        <p>
+          © {new Date().getFullYear()} {PROFESSIONAL.name} · {PROFESSIONAL.title} ·{' '}
+          {PROFESSIONAL.crn}. Todos os direitos reservados.
+        </p>
+        <p>
+          Desenvolvido por{' '}
+          <a href={DEVELOPER.url} target="_blank" rel="noopener noreferrer">
+            {DEVELOPER.name}
+          </a>
+        </p>
       </footer>
     </>
   );

@@ -16,7 +16,7 @@ Site profissional da nutricionista **Larissa Genari** (CRN-3 94745). Apresenta a
 
 - **Next.js 16** (App Router, Turbopack), **JavaScript** (sem TypeScript), **React Compiler** ativo (sem `useMemo`/`useCallback` manual)
 - **CSS Modules + CSS Custom Properties** (sem Tailwind, sem bibliotecas de UI)
-- **Fontes:** `next/font` — Cormorant Garamond (títulos) + Roboto (texto), ambas variáveis
+- **Fontes:** `next/font` — Fraunces (títulos) + Roboto (texto), ambas variáveis
 - **Imagens:** sempre `next/image` com `sizes` real no mobile
 - **Deploy:** Vercel (Web Analytics + Speed Insights)
 - **Alias:** `@/` → `src/` — nunca caminhos relativos entre módulos
@@ -27,31 +27,34 @@ Site profissional da nutricionista **Larissa Genari** (CRN-3 94745). Apresenta a
 
 Detalhes em `docs/project-structure.md`. Resumo:
 
-- `src/app/` — layout, página, política de privacidade, 404, ícones, imagem OG, sitemap
-- `src/components/<Nome>/` — um componente por pasta (`.js` + `.module.css`)
-- `src/lib/` — conteúdo e dados estáticos (`site.js`, `services.js`, `journey.js`, `education.js`, `instagram.js`, `whatsapp.js`)
-- `public/logo/` — logo vetorizada em camadas (máscaras SVG)
+- `src/app/` — só rotas e arquivos de convenção do Next (layout, página, política, 404, sitemap, ícones, imagem OG)
+- `src/components/{layout,sections,ui,behavior}/<Nome>/` — um componente por pasta (`.js` + `.module.css`)
+- `src/content/` — textos e dados editáveis · `src/config/site.js` — constantes · `src/lib/` — utilitários (`whatsapp.js`)
+- `src/styles/` — CSS global: `tokens.css` (design system), `base.css`, `utilities.css`
+- `src/assets/images/` — fotos (`larissa/`, `food/`, `instagram/`) · `public/` — logo e textura em SVG
+- Configuração (`next.config.mjs`, `eslint.config.mjs`, `jsconfig.json`) fica na raiz: é onde as ferramentas procuram
 - `docs/` — documentação; `docs/brand/` — arquivos originais da marca
 - `scripts/` — ferramentas (imagem OG, vetorização da logo, ícones, testes de qualidade/contraste)
 
-**Ordem da página:** Hero → Sobre (com formação) → Serviços → Como funciona → Instagram → CTA final → Rodapé.
+**Ordem da página:** Hero → Serviços → Manifesto (faixa de foto) → Sobre (com formação) → Como funciona → Instagram → CTA final → Rodapé.
 
 ---
 
 # Regras
 
 ## Server vs Client
-Server Component por padrão. `'use client'` só com estado, efeitos, eventos ou APIs do navegador. Hoje são client: `Header`, `StickyWhatsApp`, `Interactions`, `HeroGL`.
+Server Component por padrão. `'use client'` só com estado, efeitos, eventos ou APIs do navegador. Hoje são client: `Header`, `StickyWhatsApp`, `Interactions`.
 
 ## Estilo
-- Toda cor, fonte, peso, espaçamento e raio vem de tokens em `src/app/globals.css` (ver `docs/design-system.md`). Nada inline além de variáveis de índice/atraso (`--i`, `--anim-delay`).
+- Toda cor, fonte, peso, espaçamento e raio vem de tokens em `src/styles/tokens.css` (ver `docs/design-system.md`). Nada inline além de variáveis de índice/atraso (`--i`, `--anim-delay`).
 - **Mobile-first:** base para 320px → `@media (min-width: 768px)` → `@media (min-width: 1024px)`.
 - **Cantos quase retos** (2–3px). Círculos só em ícones e marcadores. Arredondado demais passa ar de template.
-- Toda animação respeita `prefers-reduced-motion`. Animações por scroll usam `data-anim` / `data-progress` (ver `docs/animations.md`).
+- **Sem fios finos** (bordas/divisórias de 1px): separar por cor de fundo, espaço e formas preenchidas. Fio fino dá cara de papel impresso.
+- **Modo calmo:** só fades curtos (`data-anim`) e o acordeão; nada ligado à rolagem, sem WebGL, sem animações longas ou em loop. Tudo respeita `prefers-reduced-motion` (ver `docs/animations.md`).
 
 ## Código
 - **Comentários de uma linha só**, explicando o porquê (não o quê).
-- Conteúdo editável fica em `src/lib/`; constantes da profissional e links em `src/lib/site.js`.
+- Conteúdo editável fica em `src/content/`; constantes da profissional e links em `src/config/site.js`.
 - Links externos com `target="_blank" rel="noopener noreferrer"`.
 - Touch targets ≥ 44×44px.
 

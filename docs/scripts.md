@@ -4,12 +4,11 @@
 
 O site publica `src/app/opengraph-image.jpg` estático (o PNG gerado pelo Next passa de 400KB). Para regenerar:
 
-1. Copie `scripts/og-image/opengraph-image.js` para `src/app/` e mova temporariamente `src/app/opengraph-image.jpg` para fora.
-2. `npm run build && npm run start`
-3. Baixe `http://localhost:3000/opengraph-image` e converta para JPEG (qualidade ~86) em `src/app/opengraph-image.jpg`.
-4. Apague `src/app/opengraph-image.js`.
+1. Com o `next dev` rodando, mova temporariamente `src/app/opengraph-image.jpg` e `opengraph-image.alt.txt` para fora e copie `scripts/og-image/opengraph-image.js` para `src/app/`.
+2. Baixe `http://localhost:3000/opengraph-image` (a rota funciona no dev; não precisa de `npm run build`).
+3. Converta para JPEG (qualidade ~86) em `src/app/opengraph-image.jpg`, apague `src/app/opengraph-image.js` e devolva o `.alt.txt`.
 
-As cores do gerador espelham os tokens de `globals.css` (o `ImageResponse` não lê variáveis CSS). As fontes ficam em `scripts/og-image/fonts/`.
+As cores do gerador espelham os tokens de `src/styles/tokens.css` (o `ImageResponse` não lê variáveis CSS). Fontes em `scripts/og-image/fonts/` (Fraunces e Roboto em WOFF, subconjunto latino). A capa usa a foto original `larissa-03.jpg`, não a versão feita com IA.
 
 ## Logo — `scripts/brand/`
 
@@ -18,7 +17,7 @@ Requer Python 3 com `numpy`, `pillow` e `potracer` (`pip install numpy pillow po
 | Script | Entrada | Saída |
 |---|---|---|
 | `vectorize_logo.py` | `docs/brand/logo-horizontal-original.jpg` | `public/logo/{script,detail,flesh,seeds}.svg` |
-| `generate_icons.py` | `docs/brand/logo-monograma-original.jpg` | `src/app/{icon.png,apple-icon.png,favicon.ico}` |
+| `generate_icons.py` | `docs/brand/logo-monograma-transparente.png` | `src/app/{icon.png,apple-icon.png,favicon.ico}` — transparentes, exceto o `apple-icon` (fundo branco: o iOS pinta a transparência de preto) |
 
 ```bash
 python scripts/brand/vectorize_logo.py

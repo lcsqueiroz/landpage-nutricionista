@@ -8,37 +8,49 @@ Pendências conhecidas. Atualizar conforme forem resolvidas.
 
 ## Confirmar com a cliente
 
+- [ ] **Código de Ética do CFN 2026 (Resolução 856)** — confirmar com o CRN-3 antes de publicar: (1) se a foto do Hero no desktop, redesenhada por IA, é permitida (o código veda IA para criar/manipular imagens que simulem pessoas reais); alternativa pronta é voltar à `larissa-03.jpg`; (2) se é preciso declarar no site o apoio de IA nos textos/imagens (sugestão de linha no rodapé em `docs/content-guide.md`); (3) inscrição no e-Nutricionista, exigida para atendimento online.
+- [ ] Textos novos (2026-09-27): validar com a Larissa o 2º parágrafo do Sobre (leitura da pesquisa CNPq) e a frase do Instagram ("dúvidas que aparecem nas consultas" só vale se ela já atende).
+
 - [ ] Aprovação da logo vetorizada nas cores do site (original em `docs/brand/`); se existir, pedir o arquivo vetorial (AI/SVG/PDF).
-- [ ] Etapas de "Como funciona" (`src/lib/journey.js`): questionário prévio, retornos e suporte entre consultas.
+- [ ] Etapas de "Como funciona" (`src/content/journey.js`): questionário prévio, retornos e suporte entre consultas.
 - [ ] Leitura final de todos os textos.
-- [ ] Capas originais dos posts do Instagram (1080×1350) para `src/assets/instagram/`.
+- [ ] Capas originais dos posts do Instagram (1080×1350) para `src/assets/images/instagram/`.
 - [ ] Revisão jurídica da política de privacidade, se desejado.
-- [ ] Fonte Roboto no texto (trocada da Inter em teste) — confirmar; se voltar, são 2 linhas (`layout.js` e `--font-body`).
-- [ ] "Nutricionista" da logo em bronze escuro (`--color-accent-text`) para passar AAA; o champanhe original é isento por ser logotipo, se a cliente preferir.
+- [ ] Nova paleta 60-30-10 (branco + verde profundo + coral da melancia, no lugar de porcelana + champanhe) — aprovar com a cliente.
+- [ ] Nova tipografia (Fraunces + Roboto, branch `redesign/visual-real`) — aprovar; trocar é em `layout.js` e `--font-heading`/`--font-body`.
+- [ ] Fotos de comida do Unsplash (`src/assets/images/food/`) — trocar por fotos próprias da Larissa quando houver orçamento (lista em `docs/content-guide.md`); por enquanto ficam.
+- [ ] "Nutricionista" da logo em bronze escuro (`--color-logo-role`) para passar AAA; o champanhe original é isento por ser logotipo, se a cliente preferir.
 
 ## Técnico
 
-- [ ] `.claude/SKILL.md` (design system genérico do TypeUI) contradiz o design do projeto (outra fonte, cantos 6–12px, `#18181b`) e pode induzir agentes de IA a desfazer o visual — remover ou substituir.
 - [ ] CSP usa `'unsafe-inline'` em scripts (exigido pelo Next sem nonce); endurecer com nonce via middleware se o site ganhar conteúdo dinâmico.
-- [ ] Verificador de contraste AA/AAA (axe + amostragem de pixels, hoje só no scratchpad) como `npm run test:contrast` — oferecido, aguardando decisão (precisa de puppeteer-core, axe-core e pngjs como devDependencies).
+- [ ] Verificador de contraste AA/AAA (`scripts/qa/contrast-pixels.mjs` e `contrast-axe.mjs`) como `npm run test:contrast` — aguardando decisão (precisa de puppeteer-core, axe-core e pngjs como devDependencies).
 - [ ] Lighthouse mobile local fica em ~80: o custo restante é o primeiro layout (fontes) no Chrome do Windows com CPU 4x; medir no PageSpeed Insights com a URL da Vercel antes de otimizar mais.
-- [ ] Favicon/ícone do iPhone usam a melancia original (polpa rosa); gerar a partir das camadas vetorizadas se quiser a mesma cor da logo.
+- [ ] Lighthouse precisa ser refeito depois do redesign (Fraunces + Roboto, fotos de comida, `<picture>` no Hero): rodar num build de produção com o `next dev` parado, ou direto na URL da Vercel.
+- [ ] Branch `redesign/visual-real` sem commit — commitar quando validar (o ponto de partida está no commit `5fa3a23` da `redesign/visual-premium`).
 
 ## Validação depois do deploy
 
-- [ ] Aparelhos reais: iPhone (Safari e navegador do Instagram) e Android — WebGL, rolagem, menu e header.
+- [ ] Aparelhos reais: iPhone (Safari e navegador do Instagram) e Android — rolagem, menu e header.
 - [ ] Lighthouse na URL publicada.
 - [ ] Pré-visualização do link no WhatsApp e no [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/).
 - [ ] Conferir no navegador que os scripts `/_vercel/insights` e `/_vercel/speed-insights` carregam sem violar a CSP.
 
 ## Resolvidos
 
+- [x] Ícones (favicon, icon, apple-icon) gerados do monograma com fundo transparente enviado pela cliente, 2026-09-27
+
+- [x] Imagem de pré-visualização regenerada (2026-09-27): visual atual, slogan novo, foto original (não a de IA)
+- [x] Limpeza (2026-09-27): `ServiceIcon`/campo `icon`, 23 tokens sem uso, `larissa-02.jpg`, fontes antigas do gerador OG, comentários e docs desatualizados; `.claude/SKILL.md` removido
+
+- [x] Foto do Hero no desktop gerada por IA a partir da original: aprovada pela Larissa (rosto fiel), 2026-09-26
+
 - [x] Logomarca oficial vetorizada (`public/logo/`), melancia com cores naturais
 - [x] Favicon, `icon.png` e ícone do iPhone
 - [x] Imagem de pré-visualização (JPEG 70KB, cores e cantos atuais)
 - [x] Política de privacidade (Vercel Analytics / Speed Insights)
 - [x] Página 404 com a identidade do site
-- [x] `priceRange` e código sem uso removidos; constantes centralizadas em `src/lib/site.js`
+- [x] `priceRange` e código sem uso removidos; constantes centralizadas em `src/config/site.js`
 - [x] Documentação (`CLAUDE.md`, `README.md`, `docs/`, `.claude/commands/`) atualizada
 - [x] Sitemap com fallback de URL e data de build
 - [x] Next 16.2.7 → 16.3.6 (vulnerabilidades críticas) e `npm audit` zerado

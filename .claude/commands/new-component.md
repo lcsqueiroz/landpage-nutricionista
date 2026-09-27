@@ -7,12 +7,12 @@ Crie um novo componente de seção seguindo as convenções abaixo.
 ## Estrutura
 
 ```
-src/components/<Nome>/
+src/components/sections/<Nome>/     (ou layout/, ui/, behavior/, conforme o papel)
 ├── <Nome>.js
 └── <Nome>.module.css
 ```
 
-Server Component por padrão; `'use client'` só com estado, efeitos, eventos ou APIs do navegador. Conteúdo editável vai para `src/lib/`.
+Server Component por padrão; `'use client'` só com estado, efeitos, eventos ou APIs do navegador. Conteúdo editável vai para `src/content/`; constantes em `src/config/site.js`. Importe com o alias: `@/components/sections/<Nome>/<Nome>`.
 
 ## Template JS
 
@@ -64,10 +64,11 @@ export default function <Nome>() {
 
 ## Regras
 
-- Só tokens de `globals.css` (ver `docs/design-system.md`); cantos quase retos.
+- Só tokens de `src/styles/tokens.css` (ver `docs/design-system.md`); cantos quase retos.
 - Comentários de uma linha só.
-- Animações via `data-anim` / `data-progress` (ver `docs/animations.md`), com `prefers-reduced-motion`.
-- Alterne o fundo com as seções vizinhas (`--color-bg`, `--color-surface`, `--color-surface-2`, escuro).
+- Animação só via `data-anim` (fade curto, ver `docs/animations.md`), com `prefers-reduced-motion`; nada ligado à rolagem.
+- Sem fios finos de 1px; hover/estado ativo de botões e links em rosa (`--color-accent-light` / `--color-accent-hover`).
+- Fundo segundo a hierarquia das seções (`--color-bg`, `--color-section-soft`, `--color-section-strong`, escuro); detalhes em `--color-surface-2`.
 
 ## Ao finalizar
 

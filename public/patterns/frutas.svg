@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Padrão de frutas em contorno, usado como máscara (a cor vem do CSS) -->
+  <!-- maçã -->
+  <g transform="translate(52 58) rotate(-12)">
+    <path d="M0 -12 C -6 -18 -20 -16 -20 -2 C -20 12 -10 22 -4 22 C -2 22 -1 20 0 20 C 1 20 2 22 4 22 C 10 22 20 12 20 -2 C 20 -16 6 -18 0 -12 Z"/>
+    <path d="M0 -12 C 0 -18 2 -22 5 -24"/>
+    <path d="M3 -18 C 8 -24 15 -23 16 -20 C 12 -15 6 -15 3 -18 Z"/>
+  </g>
+  <!-- fatia de melancia -->
+  <g transform="translate(200 40) rotate(14)">
+    <path d="M-22 -6 A 22 22 0 0 0 22 -6 Z"/>
+    <path d="M-17 -6 A 17 17 0 0 0 17 -6"/>
+    <g fill="#000" stroke="none">
+      <ellipse cx="-8" cy="1" rx="1.3" ry="2.1"/>
+      <ellipse cx="0" cy="4" rx="1.3" ry="2.1"/>
+      <ellipse cx="8" cy="1" rx="1.3" ry="2.1"/>
+    </g>
+  </g>
+  <!-- folha -->
+  <g transform="translate(312 96) rotate(-28)">
+    <path d="M-18 14 C -18 -6 -2 -18 18 -18 C 18 2 4 16 -18 14 Z"/>
+    <path d="M-18 14 L 10 -10"/>
+  </g>
+  <!-- cereja -->
+  <g transform="translate(128 150) rotate(8)">
+    <circle cx="-9" cy="12" r="8"/>
+    <circle cx="10" cy="15" r="8"/>
+    <path d="M-9 4 C -8 -8 0 -18 6 -24 M10 7 C 9 -6 7 -16 6 -24"/>
+    <path d="M6 -24 C 12 -26 18 -22 19 -18 C 13 -17 9 -19 6 -24 Z"/>
+  </g>
+  <!-- limão em rodela -->
+  <g transform="translate(262 206) rotate(20)">
+    <circle r="18"/>
+    <circle r="14"/>
+    <path d="M0 0 L0 -14 M0 0 L12.1 -7 M0 0 L12.1 7 M0 0 L0 14 M0 0 L-12.1 7 M0 0 L-12.1 -7"/>
+  </g>
+  <!-- pera -->
+  <g transform="translate(40 250) rotate(-18)">
+    <path d="M0 -22 C -5 -22 -6 -14 -8 -8 C -12 -2 -16 4 -16 11 C -16 19 -9 24 0 24 C 9 24 16 19 16 11 C 16 4 12 -2 8 -8 C 6 -14 5 -22 0 -22 Z"/>
+    <path d="M0 -22 L1 -28"/>
+  </g>
+  <!-- morango -->
+  <g transform="translate(160 292) rotate(-6)">
+    <path d="M0 22 C -12 16 -18 4 -16 -6 C -14 -12 -6 -12 0 -9 C 6 -12 14 -12 16 -6 C 18 4 12 16 0 22 Z"/>
+    <path d="M-10 -10 L-4 -16 L0 -11 L4 -16 L10 -10"/>
+    <g fill="#000" stroke="none">
+      <circle cx="-6" cy="0" r="1"/>
+      <circle cx="5" cy="-1" r="1"/>
+      <circle cx="0" cy="8" r="1"/>
+      <circle cx="-4" cy="13" r="1"/>
+      <circle cx="6" cy="11" r="1"/>
+    </g>
+  </g>
+  <!-- banana -->
+  <g transform="translate(318 318) rotate(-10)">
+    <path d="M-20 -8 C -14 12 10 18 22 8 C 20 6 18 6 16 7 C 6 12 -8 6 -14 -10 Z"/>
+    <path d="M-20 -8 L-21 -12"/>
+  </g>
+</svg>

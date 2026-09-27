@@ -2,7 +2,7 @@
 
 ## Metadata
 
-`src/app/layout.js` define título (com template `%s | Larissa Genari — Nutricionista`), descrição, Open Graph, Twitter e robots. `metadataBase` usa `SITE_URL` de `src/lib/site.js`.
+`src/app/layout.js` define título (com template `%s | Larissa Genari — Nutricionista`), descrição, Open Graph, Twitter e robots. `metadataBase` usa `SITE_URL` de `src/config/site.js`.
 
 ## Pré-visualização do link
 
@@ -10,7 +10,7 @@
 
 ## Dados estruturados
 
-JSON-LD no `layout.js` (`MedicalBusiness` + `Person` com CRN). Os serviços vêm de `src/lib/services.js`. O JSON é escapado (`<` → `<`) antes de ir para a página.
+JSON-LD no `layout.js` (`MedicalBusiness` + `Person` com CRN). Os serviços vêm de `src/content/services.js`. O JSON é escapado (`<` → `<`) antes de ir para a página.
 
 ## Rastreamento
 

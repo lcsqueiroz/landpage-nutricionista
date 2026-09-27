@@ -1,13 +1,14 @@
-import Header from '@/components/Header/Header';
-import Hero from '@/components/Hero/Hero';
-import Sobre from '@/components/Sobre/Sobre';
-import Servicos from '@/components/Servicos/Servicos';
-import Jornada from '@/components/Jornada/Jornada';
-import Instagram from '@/components/Instagram/Instagram';
-import CTAFinal from '@/components/CTAFinal/CTAFinal';
-import Footer from '@/components/Footer/Footer';
-import StickyWhatsApp from '@/components/StickyWhatsApp/StickyWhatsApp';
-import Interactions from '@/components/Interactions/Interactions';
+import CTAFinal from '@/components/sections/CTAFinal/CTAFinal';
+import Footer from '@/components/layout/Footer/Footer';
+import Header from '@/components/layout/Header/Header';
+import Hero from '@/components/sections/Hero/Hero';
+import Instagram from '@/components/sections/Instagram/Instagram';
+import Interactions from '@/components/behavior/Interactions/Interactions';
+import Jornada from '@/components/sections/Jornada/Jornada';
+import Manifesto from '@/components/sections/Manifesto/Manifesto';
+import Servicos from '@/components/sections/Servicos/Servicos';
+import Sobre from '@/components/sections/Sobre/Sobre';
+import StickyWhatsApp from '@/components/layout/StickyWhatsApp/StickyWhatsApp';
 
 export default function Home() {
   return (
@@ -15,8 +16,9 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Sobre />
         <Servicos />
+        <Manifesto />
+        <Sobre />
         <Jornada />
         <Instagram />
         <CTAFinal />
